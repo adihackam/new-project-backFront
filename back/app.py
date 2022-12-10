@@ -1,8 +1,8 @@
 import json
-from flask import Flask, request
+from flask import Flask, request ,redirect, render_template, url_for
 from flask_cors import CORS
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../front')
 CORS(app)
 from flask_sqlalchemy import SQLAlchemy
  
@@ -33,7 +33,7 @@ def crude_students(id=-1):
         newStudent= Students(name,city)
         db.session.add (newStudent)
         db.session.commit()
-        return "a new rcord was create"
+        return "a new rcord was create" 
     if request.method == 'GET':
         res=[]
         for student in Students.query.all():
@@ -56,8 +56,8 @@ def crude_students(id=-1):
         return {"msg":"row updated - TADA"}
 
 @app.route('/')
-def hello():
-    return 'Hello, World!'
+def index():
+    return render_template('index.html')
  
 if __name__ == '__main__':
     with app.app_context():db.create_all()
