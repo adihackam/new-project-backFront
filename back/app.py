@@ -51,7 +51,7 @@ def crude_students(id=-1):
         request_data = request.get_json()
         # print(request_data['city'])
         me.city = request_data['city']
-        me.name= request_data["name"]
+        me.name= request_data['name']
         db.session.commit()
         return {"msg":"row updated - TADA"}
 

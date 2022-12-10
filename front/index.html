@@ -52,7 +52,7 @@
 
         const updStudent =async (id) => {
             // put (update)
-            const res=await axios.put(MY_SERVER +"/"+ id,{ city: city.value, name: name.value })
+            const res=await axios.put(MY_SERVER +"/"+ id,{ city: city.value, name: stuName.value })
             console.log(res)
             loadData()
         }
